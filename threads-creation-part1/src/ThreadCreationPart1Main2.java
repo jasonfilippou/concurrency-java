@@ -23,27 +23,32 @@
  */
 
 /**
- *  Threads Creation - Part 1, Thread Capabilities & Debugging
+ * Threads Creation - Part 1, Thread Capabilities & Debugging
  * <a href="https://www.udemy.com/java-multithreading-concurrency-performance-optimization">...</a>
  */
-public class Main1 {
+public class ThreadCreationPart1Main2 {
 
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                //Code that will run in  a new thread
-                System.out.println("we are now in thread "+Thread.currentThread().getName());
-                System.out.println("Current thread priority is " + Thread.currentThread().getPriority());
+                //Code that will run in a new thread
+                throw new RuntimeException("Intentional Exception");
             }
         });
 
-        thread.setName("New Worker Thread");
+        thread.setName("Misbehaving thread");
 
-        thread.setPriority(Thread.MAX_PRIORITY);
+        thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 
-        System.out.println("We are in thread: " + Thread.currentThread().getName()+ " before starting a new thread");
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println("A critical error happened in thread " + t.getName()
+                        + " the error is " + e.getMessage());
+            }
+        });
         thread.start();
-        System.out.println("We are in thread: " + Thread.currentThread().getName()+ " after starting a new thread");
+
     }
+
 }
