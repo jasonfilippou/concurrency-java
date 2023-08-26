@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Custom ###
+/optimizing-for-throughput-example/resources/apache-jmeter-5.6.2/

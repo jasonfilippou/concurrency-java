@@ -81,5 +81,13 @@ public class ComplexCalculation {
                 BigInteger.valueOf(Long.parseLong("10")),
                 BigInteger.valueOf(Long.parseLong("11")),
                 BigInteger.valueOf(Long.parseLong("11"))));
+
+    System.out.println(
+            "20^20 + 40^40 = "
+                    + calculateResult(
+                    BigInteger.valueOf(Long.parseLong("20")),
+                    BigInteger.valueOf(Long.parseLong("20")),
+                    BigInteger.valueOf(Long.parseLong("40")),
+                    BigInteger.valueOf(Long.parseLong("40"))));
   }
 }
